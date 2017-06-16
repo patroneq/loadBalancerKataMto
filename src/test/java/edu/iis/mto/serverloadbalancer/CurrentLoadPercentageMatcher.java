@@ -10,13 +10,17 @@ public class CurrentLoadPercentageMatcher extends TypeSafeMatcher<Server>{
 
 	public CurrentLoadPercentageMatcher(double expectedLoadPercentage) {
 		this.expectedLoadPercentage = expectedLoadPercentage;
-		// TODO Auto-generated constructor stub
 	}
 
 	public void describeTo(Description description) {
-			description.appendText("a server with load percentage of ").appendValue(expectedLoadPercentage);
+		description.appendText("a server with load percentage of ").appendValue(expectedLoadPercentage);
 	}
-
+	
+	
+	@Override
+	protected void describeMismatchSafely(Server item, Description description) {
+		description.appendText("a server with load percentage of ").appendValue(expectedLoadPercentage);
+	}
 	@Override
 	protected boolean matchesSafely(Server server) {
 		return doublesAreEqual(expectedLoadPercentage, server.currentLoadPercentage);
