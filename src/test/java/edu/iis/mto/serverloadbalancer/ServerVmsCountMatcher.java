@@ -18,7 +18,7 @@ public class ServerVmsCountMatcher extends TypeSafeMatcher<Server>{
 
 	@Override
 	protected void describeMismatchSafely(Server item, Description description) {
-		description.appendText("server with vms count of ").appendValue(item.currentLoadPercentage);
+		description.appendText("server with vms count of ").appendValue(item.getCurrentLoadPercentage());
 	}
 	@Override
 	protected boolean matchesSafely(Server server) {
